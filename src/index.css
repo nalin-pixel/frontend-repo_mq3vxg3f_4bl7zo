@@ -1,46 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --font-sans: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+
+    /* DeMillan identity palette */
+    --brand-pink: #ead9d1; /* signature pink-beige */
+    --brand-cream: #f7f3ef; /* creamy white */
+    --brand-gold: #c8b08a; /* muted gold accent */
+    --brand-gold-200: #e6dccb; /* thin border gold/cream */
+    --brand-brown: #4d362a; /* deep brown for contrast */
+
+    --page-bg: #fffdfb; /* warm white base that blends into pink-beige */
   }
 
   html {
     font-family: var(--font-sans);
     font-feature-settings: "rlig" 1, "calt" 1;
+    color-scheme: light;
+    background: var(--page-bg);
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased text-neutral-800;
   }
+
+  /* Ensure Tailwind's font-serif uses our brand serif */
+  .font-serif { font-family: var(--font-serif) !important; }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Subtle global utilities for the soft, editorial aesthetic */
 @layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
-
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+  .soft-shadow { box-shadow: 0 20px 60px rgba(77, 54, 42, 0.14); }
+  .gold-border { border-color: var(--brand-gold-200); }
 }
